@@ -1,17 +1,17 @@
-var React = require('react');
-var helpers = require('svg-react-loader/helpers')(require('<%= reactDom %>'));
+import React from 'react';
+import ReactDOM from 'react-dom';
+import _helpers from 'svg-react-loader/helpers';
 
-module.exports = React.createClass({
+const helpers = _helpers(ReactDOM);
 
-    displayName: <%= JSON.stringify(displayName) %>,
+export default class SVG extends React.Component {
+    static displayName = <%= JSON.stringify(displayName) %>;
 
-    getDefaultProps () {
-        return <%= JSON.stringify(defaultProps) %>;
-    },
+    static defaultProps = <%= JSON.stringify(defaultProps) %>;
 
     componentDidMount () {
         helpers.applyXmlAttributes(this);
-    },
+    }
 
     render () {
         var props = this.props;
@@ -24,4 +24,4 @@ module.exports = React.createClass({
             </<%= tagName %>>
         );
     }
-});
+}
